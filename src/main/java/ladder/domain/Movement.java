@@ -4,21 +4,35 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class Movement {
-    private ArrayList<ArrayList<Boolean>> userCount = new ArrayList<>();
+    private Random r = new Random();
+    private ArrayList<Ladder> lineObject = new ArrayList<>();
+    private static final int MAX = 5;
 
-    public ArrayList<Boolean> size(int input) {
-        Random r = new Random();
-        ArrayList<Boolean> userInput = new ArrayList<>();
-        for (int j = 0; j < input - 1; j++) {
-            userInput.add(r.nextBoolean());
+    public String[] nameCut(String inputName) {
+        String[] cut = inputName.split(",");
+        for (String s : cut) {
+            nameException(s);
         }
-        return userInput;
+        return cut;
     }
 
-    public ArrayList<ArrayList<Boolean>> userRepetition(int input, int height) {
-        for (int i = 0; i < height; i++) {
-            userCount.add(size(input));
+    private void nameException(String s) {
+        if (s.length() > MAX) {
+            throw new IllegalArgumentException("자리수가 잘못되었습니다. 다시 입력하세요.");
         }
-        return userCount;
+    }
+
+    public ArrayList<Ladder> ladderObject(int height, String inputName) {
+        for (int i = 0; i < height; i++) {
+            lineObject.add(new Ladder(r.nextBoolean()));
+        }
+        return lineObject;
+    }
+
+    public ArrayList<Ladder> temporary(String inputName, int height) {
+        for (int i = 0; i < height; i++) {
+            lineObject.get(i).randomInput(nameCut(inputName));
+        }
+        return lineObject;
     }
 }
