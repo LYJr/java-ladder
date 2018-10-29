@@ -13,7 +13,6 @@ public class MovementTest {
         mt.nameCut(a);
     }
 
-
     // alt + insert
     @Test
     public void 객체값확인() {

@@ -10,20 +10,20 @@ public class ResultView {
     private static final String LINK = "-----";
     private static final String BLANK = "     ";
 
-    public void nameOutput(String[] name) {
+    public static void nameOutput(String[] name) {
         for (int i = 0; i < name.length; i++) {
             System.out.print(String.format("%-6s", name[i]));
         }
         System.out.println();
     }
 
-    public void transverse(ArrayList<Ladder> user, String[] name) {
+    public static void transverse(ArrayList<Ladder> user, String[] name) {
         for (int i = 0; i < user.size(); i++) {
             repeatOutput(user.get(i).getValue());
         }
     }
 
-    private void repeatOutput(ArrayList<Boolean> user) {
+    private static void repeatOutput(ArrayList<Boolean> user) {
         for (int j = 0; j < user.size(); j++) {
             String inputBlank = BLANK;
             System.out.print(LADDER_HEIGHT);
@@ -33,7 +33,7 @@ public class ResultView {
         System.out.println(LADDER_HEIGHT);
     }
 
-    private String Process(ArrayList<Boolean> user, int j, String inputBlank) {
+    private static String Process(ArrayList<Boolean> user, int j, String inputBlank) {
         if (user.get(j) == true) {
             inputBlank = LINK;
         }
